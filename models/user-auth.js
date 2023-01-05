@@ -10,6 +10,17 @@ const getData = () => {
     }
 }
 
+const findByID = (id) => {
+    const list = getData();
+    for(let i = 0; i < list.length; i++) {
+        if(id == list[i].id) {
+            return list[i]
+        }
+    }
+    return null
+}
+
 module.exports = {
-    getData
+    getData,
+    findByID
 }

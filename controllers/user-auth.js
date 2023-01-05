@@ -6,19 +6,20 @@ class UserAuthController {
     static Login(req, res) {
         const{username, password} = req.body
         const list = getData()
-        let found = false
+        let found = null
         list.forEach(itm => {
             if(found) {
                 return
             }
             
             if(itm.username == username && itm.password == password) {
-                found = true
+                found = itm
             }
         });
         
         if(found) {
             const token = generateToken({
+                id: found.id,
                 username: username,
                 password: password
             })
